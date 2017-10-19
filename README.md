@@ -29,3 +29,5 @@ The visualization will provide insight for the police and policy makers. Alcohol
 
 Open Austin Code of Conduct:
 https://www.open-austin.org/about/#code-of-conduct
+
+License: MIT
