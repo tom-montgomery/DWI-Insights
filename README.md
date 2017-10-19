@@ -8,6 +8,9 @@ We want to know if the police are making DWI arrests in areas where they are nee
 
 The visualization will provide insight for the police and policy makers. Alcohol related traffic fatalities are a significant public safety issue in Austin and we want to make sure that police resources are directed to areas where prevention can a difference.
 
+<b> Software used: </b>
+Currently using ArcGIS 10.3.1 (python 2x) for analysis and data prep but open to open source solutions.
+
 
 <b/> Ideas for spatial analysis & mapping:</b>
 
