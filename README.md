@@ -17,12 +17,14 @@ Political Boundaries : TNRIS (https://tnris.org/data-download/#!/statewide)
 
 DWI & Crash Data: TXDoT (https://cris.dot.state.tx.us/public/Query/)
 
-<b/> Ideas for spatial analysis & mapping:</b>
+<b/> Goals for spatial analysis & mapping:</b>
 
-- Need to figure out timeline. Data is availiable for multiple years.
-- DWI death rate per capita per police agency district
-- Alcohol related injury rate per capita per police agency district
-- Finding ratio of arrests to crashes per police agency district and comparing to state wide
+- Using data 2010-2017 from CRIS
+- DWI death rate per capita per county
+- Alcohol related injury rate per capita per county
+- Possibly inding ratio of arrests to crashes per police agency district and comparing to state wide
+- Mapping results in informative way.
+- Showing year on year trends for each county and using regression to predict.
 
 
 
