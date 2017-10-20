@@ -19,12 +19,12 @@ DWI & Crash Data: TXDoT (https://cris.dot.state.tx.us/public/Query/)
 
 <b/> Goals for spatial analysis & mapping:</b>
 
-- Using data 2010-2017 from CRIS
-- DWI death rate per capita per county
-- Alcohol related injury rate per capita per county
-- Possibly finding ratio of arrests to crashes per police county and comparing to state wide. Need to find DWI arrest record source.
-- Mapping results in informative way.
-- Showing year on year trends for each county and using regression to predict.
+•	Alcohol related crash death rate per capita per county
+•	Alcohol related crash injury rate per capita per county
+•	Possibly finding ratio of arrests to crashes per county and comparing to state wide. Need to find DWI arrest record source as txdot crash records do not include all charges/arrests, only those resulting from the crash incident.
+•	Mapping results in informative way.
+•	Showing year on year trends for #1 and #2 for each county and using regression to predict upcoming stats.
+
 
 
 
