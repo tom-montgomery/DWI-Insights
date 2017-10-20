@@ -3,17 +3,16 @@ import sys
 
 import arcpy
 
-directory = sys.path[0]
-workspace = '{0}\\DWI.gdb'.format(directory)
 # Using NAD 83 as coordinate system
 spatial_ref = arcpy.SpatialReference(4269)
+directory = sys.path[0]
 
 
-def convert_to_points(workspace):
+def convert_to_points():
     """Parses query results from CRIS and converts to GIS point format. Exports feature classes for each year of TXDoT
     data."""
-
-    csv_years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017]
+    workspace = '{0}\\DWI.gdb'.format(directory)
+    data_years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017]
     if arcpy.Exists(workspace):
         pass
     else:
@@ -21,7 +20,7 @@ def convert_to_points(workspace):
     arcpy.env.workspace = workspace
     arcpy.env.overwriteOutput = True
 
-    for year in csv_years:
+    for year in data_years:
         csv = '{0}\\CSVResults\\DWI_{1}.csv'.format(directory, year)
         table = 'tblDWI_{0}'.format(year)
         # Prep CSV by converting lat long to float and removing NaN
@@ -47,4 +46,4 @@ def convert_to_points(workspace):
         else:
             arcpy.Append_management("DWIpoints_{0}".format(year), "Master_DWIpoints", "NO_TEST")
 
-convert_to_points(workspace)
+# convert_to_points(workspace)
