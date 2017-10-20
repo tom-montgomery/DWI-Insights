@@ -35,9 +35,7 @@ def convert_to_points():
         arcpy.MakeXYEventLayer_management("{0}_".format(table), "Longitude", "Latitude", "DWI_{0}".format(year),
                                           spatial_ref)
         arcpy.FeatureClassToFeatureClass_conversion("DWI_{0}".format(year), workspace, "DWIpoints_{0}".format(year))
-        # Clean up geodatabase
-        arcpy.Delete_management(table)
-        arcpy.Delete_management("{0}_".format(table))
+
         # Create master point fc
         if year == 2010:
             arcpy.CreateFeatureclass_management(workspace, "Master_DWIpoints", "POINT", "DWIpoints_{0}".format(year),
@@ -45,5 +43,10 @@ def convert_to_points():
             arcpy.Append_management("DWIpoints_{0}".format(year), "Master_DWIpoints", "NO_TEST")
         else:
             arcpy.Append_management("DWIpoints_{0}".format(year), "Master_DWIpoints", "NO_TEST")
+        arcpy.Delete_management("DWIpoints_{0}".format(year))
+        # Clean up geodatabase
+        arcpy.Delete_management(table)
+        arcpy.Delete_management("{0}_".format(table))
 
-# convert_to_points(workspace)
+
+convert_to_points()
