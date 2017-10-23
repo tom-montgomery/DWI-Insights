@@ -43,6 +43,9 @@ def convert_to_points():
             arcpy.Append_management("DWIpoints_{0}".format(year), "Master_DWIpoints", "NO_TEST")
         else:
             arcpy.Append_management("DWIpoints_{0}".format(year), "Master_DWIpoints", "NO_TEST")
+        # Delete records with duplicate CrashID
+        arcpy.DeleteIdentical_management(in_dataset="Master_DWIpoints", fields="Crash_ID")
+
         arcpy.Delete_management("DWIpoints_{0}".format(year))
         # Clean up geodatabase
         arcpy.Delete_management(table)
