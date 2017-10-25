@@ -98,12 +98,38 @@ def county_injuries():
         county_df = pd.DataFrame.from_dict(data_dict_injuries)
         county_df.to_csv('{0}\CSVResults\CountyInjuries.csv'.format(directory))
 
+
+def calculate_averages():
+    """Calculates crash and injury rate averages and compares to statewide rates. Adds field with difference to county
+    feature class."""
+    # Read and format data frames.
+    death_df = (pd.read_csv('{0}\CSVResults\CountyDeaths.csv'.format(directory))).drop('Unnamed: 0', axis=1)
+    injury_df = (pd.read_csv('{0}\CSVResults\CountyInjuries.csv'.format(directory))).drop('Unnamed: 0', axis=1)
+    data_dict_rates = {name: [] for name in county_list}
+
+    # Calculate average statewide rates
+    death_avg = ((death_df.mean(numeric_only=True)).sum())/254
+    injury_avg = ((injury_df.mean(numeric_only=True)).sum())/254
+
+    # Compare averages and place in dict in order: death average, injury average
+    for c in county_list:
+        county_injury_diff = injury_avg - ((injury_df[c].values.sum())/len(data_years))
+        county_death_dff = death_avg - ((death_df[c].values.sum())/len(data_years))
+        data_dict_rates[c] = [county_death_dff, county_injury_diff]
+
+    with arcpy.da.UpdateCursor(counties, ["CNTY_NM", "DeathRateDiff", "InjuryRateDiff"]) as cursor3:
+        for row in cursor3:
+            row[1] = data_dict_rates[row[0]][0]
+            row[2] = data_dict_rates[row[0]][1]
+            cursor3.updateRow(row)
 # Clean up
 fcs = arcpy.ListFeatureClasses()
+print fcs
 for fc in fcs:
     if "deaths" in fc or "injuries" in fc:
         arcpy.Delete_management(fc)
 
 
-county_deaths()
-county_injuries()
+# county_deaths()
+# county_injuries()
+# calculate_averages()

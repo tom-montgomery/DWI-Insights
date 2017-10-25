@@ -53,4 +53,4 @@ def convert_to_points():
         arcpy.Delete_management("{0}_".format(table))
 
 
-convert_to_points()
+# convert_to_points()
