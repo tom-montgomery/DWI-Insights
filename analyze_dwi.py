@@ -18,7 +18,8 @@ else:
 arcpy.env.workspace = workspace
 arcpy.env.overwriteOutput = True
 counties = '{0}\\counties'.format(workspace)
-data_years = [2010, 2011, 2012, 2013, 2014, 2015, 2016, 2017]
+# data_years = range(2010, 2018)
+data_years = range(2010, 2017)
 county_list = []
 
 # Build county list
@@ -32,7 +33,7 @@ def county_deaths():
     county for year on year trend analysis and to find enforcement patterns on a regional scale"""
     arcpy.MakeFeatureLayer_management("Master_DWIpoints", "Master_lyr")
 
-    # Dictionary of dictionaries for building and assigning individual county stats into single feature class.
+    # Dictionary of dictionaries for building county deaths data frame
     data_dict_deaths = {name: {} for name in county_list}
     for key in data_dict_deaths:
         data_dict_deaths[key] = {year: 0 for year in data_years}
@@ -68,7 +69,7 @@ def county_injuries():
     county for year on year trend analysis and to find enforcement patterns on a regional scale"""
     arcpy.MakeFeatureLayer_management("Master_DWIpoints", "Master_lyr")
 
-    # Dictionary of dictionaries for building and assigning individual county stats into single feature class.
+    # Dictionary of dictionaries for building county injuries data frame
     data_dict_injuries = {name: {} for name in county_list}
     for key in data_dict_injuries:
         data_dict_injuries[key] = {year: 0 for year in data_years}
@@ -97,4 +98,12 @@ def county_injuries():
         county_df = pd.DataFrame.from_dict(data_dict_injuries)
         county_df.to_csv('{0}\CSVResults\CountyInjuries.csv'.format(directory))
 
+# Clean up
+fcs = arcpy.ListFeatureClasses()
+for fc in fcs:
+    if "deaths" in fc or "injuries" in fc:
+        arcpy.Delete_management(fc)
+
+
+county_deaths()
 county_injuries()
