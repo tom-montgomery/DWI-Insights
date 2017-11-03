@@ -29,6 +29,7 @@ Statewide per capita alcohol involved crash incidents and oilfield locations:
 
 
 County by county plotting of crash incidents:
+![https://tom-montgomery.carto.com/builder/3bb68e44-c461-47ba-beb2-483a5b37e067/embed](https://tom-montgomery.carto.com/builder/3bb68e44-c461-47ba-beb2-483a5b37e067/embed)
 ![https://github.com/tom-montgomery/Texas-DWI-Insights/blob/master/StatsImg/Dallas.png](https://github.com/tom-montgomery/Texas-DWI-Insights/blob/master/StatsImg/Dallas.png)
 
 
