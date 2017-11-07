@@ -12,8 +12,8 @@ def convert_to_points():
     """Parses query results from CRIS and converts to GIS point format. Exports feature classes for each year of TXDoT
     data."""
     workspace = '{0}\\DWI.gdb'.format(directory)
-    # data_years = range(2010, 2018)
-    data_years = range(2010, 2017)
+    data_years = range(2010, 2018)
+    # data_years = range(2010, 2017)
     if arcpy.Exists(workspace):
         pass
     else:
